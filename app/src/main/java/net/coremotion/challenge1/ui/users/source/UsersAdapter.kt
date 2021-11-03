@@ -34,10 +34,16 @@ class UsersAdapter() : PagingDataAdapter<Users.Data, UsersAdapter.UserViewHolder
             binding.profileImage.setImage(user?.avatar)
             binding.tvEmail.text = user?.email
             binding.tvName.text = user?.firstName.plus(" ").plus(user?.lastName)
+            setListeners()
+        }
+
+        private fun setListeners() {
+            binding.root.setOnClickListener(this)
         }
 
         override fun onClick(p0: View?) {
-            binding.root.setOnClickListener(this)
+            val id = user?.id
+            userItemOnClick?.invoke(id!!)
         }
     }
 
