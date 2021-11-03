@@ -10,11 +10,14 @@ import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import net.coremotion.challenge1.common.Resource
 import net.coremotion.challenge1.domain.model.UserDetail
+import net.coremotion.challenge1.domain.model.Users
 import net.coremotion.challenge1.domain.reposoitory.UserRepository
 import javax.inject.Inject
 
 @HiltViewModel
-class UserDetailViewModel @Inject constructor(private val userRepository: UserRepository) : ViewModel() {
+class UserDetailViewModel @Inject constructor(
+    private val userRepository: UserRepository
+) : ViewModel() {
     private val _userDetailFlow = MutableStateFlow<Resource<UserDetail>>(Resource.loading(null))
     val userDetailFlow = _userDetailFlow.asStateFlow()
 
